@@ -33,7 +33,7 @@ public class WhatsappRepository {
         }
         User user=new User(name,mobile);
         userMobile.add(mobile);
-        return "Success";
+        return "SUCCESS";
     }
 
     public Group createGroup(List<User> users) {
@@ -60,7 +60,7 @@ public class WhatsappRepository {
 
     public int sendMessage(Message message, User sender, Group group) throws Exception {
         if(!groupUserMap.containsKey(group)){
-            throw new Exception("Group does not exists");
+            throw new Exception("Group does not exist");
         }
         if(!groupUserMap.get(group).contains(sender)){
             throw new Exception("You are not allowed to send message");
@@ -82,7 +82,7 @@ public class WhatsappRepository {
             throw new Exception("Approver dose not have rights");
         }
         if(!groupUserMap.get(group).contains(user)){
-            throw new Exception("User not found");
+            throw new Exception("User is not a participant");
         }
         adminMap.replace(group,user);
         return "SUCCESS";
